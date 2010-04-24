@@ -49,10 +49,9 @@ function draw() {
 
 	var canvas = $('senspiral')
 	var context = canvas.getContext('2d');
-	var centerX = canvas.width / 2;
-	var centerY = canvas.height / 2;
+	var center = canvas.width / 2;
 
-	const spacing = lineWidth = centerX / num360s / 1.05;
+	const spacing = lineWidth = center / num360s / 1.05;
 
 	context.lineWidth = lineWidth;
 	history_startpos = 0;
@@ -61,8 +60,8 @@ function draw() {
 
 	for (i = 0; i < num360s; i += second) {
 		var angle = i * 2 * Math.PI;
-		curX = centerX + spacing * i * Math.sin(angle);
-		curY = centerY - spacing * i * Math.cos(angle);
+		curX = center + spacing * i * Math.sin(angle);
+		curY = center - spacing * i * Math.cos(angle);
 
 		if (prevX != NaN) {
 			v = Math.floor(i * 255 / num360s);
