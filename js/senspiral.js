@@ -1,5 +1,5 @@
 const second = 1 / (24 * 60 * 60);
-const startDay = new Date("2010-01-05").valueOf() / 1000;
+var startDay;
 var sense_history = null;
 var history_startpos;
 
@@ -29,19 +29,23 @@ function fetch_sense_history() {
 					what != '0' // boolean
 				]);
 			};
-			draw();
+			$('plotbtn').enable().value = 'Refresh';
+			Event.observe('plotbtn', 'click', draw);
 		}
 	});
 }
 
 function init() {
+	$('plotbtn').disable().value = 'Loading history...';
 	fetch_sense_history();
 }
 
 function draw() {
-	const num360s = 10;
+	const num360s = parseInt($('numdays').value);
 	const openColor = 'rgb(0, 255, 0)';
 	const closedColor = 'rgb(255, 0, 0)';
+
+	startDay = new Date($('startday').value).valueOf() / 1000;
 
 	var canvas = $('senspiral')
 	var context = canvas.getContext('2d');
