@@ -1,0 +1,34 @@
+body {
+	font-family: verdana, tahoma, sans-serif;
+}
+
+h1 {
+	color: #999;
+}
+
+#controlpanel {
+	float: left;
+	border: 1px #aaa solid;
+	background: #ddd;
+	padding: 10px;
+}
+
+#controlpanel input[type=text] {
+	margin-bottom: 6px;
+	width: 120px;
+}
+
+#controlpanel label {
+	display: block;
+	font-size: 8pt;
+}
+
+#controlpanel input[type=button] {
+	display: block;
+	margin: auto;
+	margin-top: 8px;
+}
+
+#senspiral {
+	margin-left: 16px;
+}
