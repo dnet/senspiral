@@ -4,7 +4,7 @@ function state4pos(pos) {
 
 function init() {
 	const num360s = 10;
-	const second = 1 / (24 * 60);
+	const second = 1 / (24 * 60 * 60);
 	const openColor = 'rgb(0, 255, 0)';
 	const closedColor = 'rgb(255, 0, 0)';
 
