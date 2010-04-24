@@ -61,6 +61,7 @@ function execdraw() {
 	startDay = new Date($('startday').value).valueOf() / 1000;
 
 	var canvas = $('senspiral')
+	canvas.width = canvas.height = parseInt($('canvassize').value);
 	var context = canvas.getContext('2d');
 	var center = canvas.width / 2;
 
