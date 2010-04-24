@@ -1,13 +1,15 @@
 const second = 1 / (24 * 60 * 60);
 const startDay = new Date("2010-01-05").valueOf() / 1000;
 var sense_history = null;
+var history_startpos;
 
 function state4pos(pos) {
 	var utc = pos / second + startDay;
 	var retval = false;
-	for (var i = 0; i < sense_history.length - 1; i++) {
+	for (var i = history_startpos; i < sense_history.length - 1; i++) {
 		he = sense_history[i];
 		if (he[0] > utc) break;
+		history_startpos = i;
 		retval = he[1];
 	}
 	return retval;
@@ -49,6 +51,7 @@ function draw() {
 	const spacing = lineWidth = centerX / num360s / 1.05;
 
 	context.lineWidth = lineWidth;
+	history_startpos = 0;
 
 	var curX, curY, prevX = NaN, prevY = NaN, prevState = null;
 
