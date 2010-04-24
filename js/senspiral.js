@@ -15,7 +15,8 @@ function state4pos(pos) {
 	return retval;
 }
 
-function fetch_sense_history() {
+function init() {
+	buttonstate('Loading history...');
 	new Ajax.Request('acd.php', {
 		onSuccess: function(response) {
 			sense_history = new Array();
@@ -41,11 +42,6 @@ function buttonstate(txt) {
 	} else {
 		$('plotbtn').enable().value = 'Refresh';
 	}
-}
-
-function init() {
-	buttonstate('Loading history...');
-	fetch_sense_history();
 }
 
 function draw() {
