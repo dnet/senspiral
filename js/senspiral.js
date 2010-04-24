@@ -29,18 +29,31 @@ function fetch_sense_history() {
 					what != '0' // boolean
 				]);
 			};
-			$('plotbtn').enable().value = 'Refresh';
+			buttonstate();
 			Event.observe('plotbtn', 'click', draw);
 		}
 	});
 }
 
+function buttonstate(txt) {
+	if (txt) {
+		$('plotbtn').disable().value = txt;
+	} else {
+		$('plotbtn').enable().value = 'Refresh';
+	}
+}
+
 function init() {
-	$('plotbtn').disable().value = 'Loading history...';
+	buttonstate('Loading history...');
 	fetch_sense_history();
 }
 
 function draw() {
+	buttonstate('Drawing...');
+	setTimeout(execdraw, 1);
+}
+
+function execdraw() {
 	const num360s = parseInt($('numdays').value);
 	const openColor = 'rgb(0, 255, 0)';
 	const closedColor = 'rgb(255, 0, 0)';
@@ -82,6 +95,7 @@ function draw() {
 	}
 
 	context.stroke();
+	buttonstate();
 }
 
 Event.observe(window, 'load', init);
