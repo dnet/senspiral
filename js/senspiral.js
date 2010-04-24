@@ -51,8 +51,8 @@ function draw() {
 
 function execdraw() {
 	const num360s = parseInt($('numdays').value);
-	const openColor = 'rgb(0, 255, 0)';
-	const closedColor = 'rgb(255, 0, 0)';
+	const openColor = $('opencolor').value;
+	const closedColor = $('closedcolor').value;
 
 	startDay = new Date($('startday').value).valueOf() / 1000;
 

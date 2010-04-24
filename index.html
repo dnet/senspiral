@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="senspiral.css" />
 <script type="text/javascript" src="js/prototype.js"></script>
 <script type="text/javascript" src="js/senspiral.js"></script>
+<script type="text/javascript" src="js/jscolor/jscolor.js"></script>
 </head> 
 <body> 
 <h1>SenSpiral</h1>
@@ -16,6 +17,10 @@
 <input type="text" id="numdays" value="10" />
 <label for="canvassize">Canvas size</label>
 <input type="text" id="canvassize" value="400" />
+<label for="canvassize">Open color</label>
+<input type="text" id="opencolor" value="00FF00" class="color" />
+<label for="canvassize">Closed color</label>
+<input type="text" id="closedcolor" value="FF0000" class="color" />
 <input type="button" id="plotbtn" value="Refresh" />
 </div>
 <canvas id="senspiral">
