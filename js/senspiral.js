@@ -66,14 +66,14 @@ function execdraw() {
 	context.lineWidth = lineWidth;
 	history_startpos = 0;
 
-	var curX, curY, prevX = NaN, prevY = NaN, prevState = null;
+	var curX, curY, prevX = null, prevY = null, prevState = null;
 
 	for (i = 0; i < num360s; i += second) {
 		var angle = i * 2 * Math.PI;
 		curX = center + spacing * i * Math.sin(angle);
 		curY = center - spacing * i * Math.cos(angle);
 
-		if (prevX != NaN) {
+		if (prevX != null) {
 			v = Math.floor(i * 255 / num360s);
 			curState = state4pos(i);
 			if (curState != prevState) {
