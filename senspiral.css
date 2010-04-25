@@ -29,6 +29,10 @@ h1 {
 	margin-top: 8px;
 }
 
-#senspiral {
+#senspiral, #nscanvas {
 	margin-left: 16px;
+}
+
+#nscanvas {
+	float: left;
 }
