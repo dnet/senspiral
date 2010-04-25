@@ -25,8 +25,16 @@ function init() {
 				a = scs[i].attributes;
 				when = a.getNamedItem('when').nodeValue;
 				what = a.getNamedItem('what').nodeValue;
+				whenutc = Date.UTC(
+					when.substring(0, 4),
+					parseInt(when.substring(5, 7)) - 1,
+					when.substring(8, 10),
+					when.substring(11, 13),
+					when.substring(14, 16),
+					when.substring(17, 19)
+				);
 				sense_history.push([
-					new Date(when).valueOf() / 1000, // UNIX timestamp
+					whenutc / 1000, // UNIX timestamp
 					what != '0' // boolean
 				]);
 			};
