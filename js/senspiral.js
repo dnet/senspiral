@@ -62,7 +62,12 @@ function execdraw() {
 	const openColor = '#' + $('opencolor').value;
 	const closedColor = '#' + $('closedcolor').value;
 
-	startDay = new Date($('startday').value).valueOf() / 1000;
+	sd = $('startday').value;
+	startDay = Date.UTC(
+		sd.substring(0, 4),
+		parseInt(sd.substring(5, 7)) - 1,
+		sd.substring(8, 10)
+	) / 1000;
 
 	var canvas = $('senspiral')
 	canvas.width = canvas.height = parseInt($('canvassize').value);
