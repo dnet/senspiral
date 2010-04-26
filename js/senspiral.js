@@ -15,7 +15,14 @@ function state4pos(pos) {
 	return retval;
 }
 
+function keyhandler(evt) {
+	if (evt.keyCode == 13 && !$('plotbtn').disabled) draw();
+}
+
 function init() {
+	$$('input[type=text]').each(function (i) {
+		Event.observe(i.id, 'keydown', keyhandler);
+	});
 	buttonstate('Loading history...');
 	new Ajax.Request('acd.php', {
 		onSuccess: function(response) {
