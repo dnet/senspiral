@@ -6,8 +6,15 @@ h1 {
 	color: #999;
 }
 
-#controlpanel {
+#leftpanel {
 	float: left;
+}
+
+#flattrpanel {
+	padding-top: 16px;
+}
+
+#controlpanel {
 	border: 1px #aaa solid;
 	background: #ddd;
 	padding: 10px;

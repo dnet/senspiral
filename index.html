@@ -10,6 +10,7 @@
 </head> 
 <body> 
 <h1>SenSpiral</h1>
+<div id="leftpanel">
 <div id="controlpanel">
 <label for="startday">Start date</label>
 <input type="text" id="startday" value="2010-01-05" />
@@ -22,6 +23,17 @@
 <label for="canvassize">Closed color</label>
 <input type="text" id="closedcolor" value="FF0000" class="color" />
 <input type="button" id="plotbtn" value="Refresh" />
+</div>
+<div id="flattrpanel">
+<script type="text/javascript">
+	var flattr_url = 'http://vsza.hu/senspiral/';
+</script>
+<script src="http://api.flattr.com/button/load.js" type="text/javascript"></script>
+<noscript>
+<a href="http://flattr.com/thing/18364/SenSpiral" target="_blank">
+<img src="http://api.flattr.com/button/button-static-50x60.png" title="Flattr this" border="0" /></a>
+</noscript>
+</div>
 </div>
 <canvas id="senspiral">
 <div id="nscanvas">
