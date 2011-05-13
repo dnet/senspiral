@@ -61,10 +61,8 @@ function buttonstate(txt) {
 
 function draw() {
 	buttonstate('Drawing...');
-	setTimeout(execdraw, 1);
-}
+	var start = new Date();
 
-function execdraw() {
 	const num360s = parseInt($('numdays').value);
 	const openColor = '#' + $('opencolor').value;
 	const closedColor = '#' + $('closedcolor').value;
@@ -86,33 +84,41 @@ function execdraw() {
 	context.lineWidth = lineWidth;
 	history_startpos = 0;
 
-	var curX, curY, prevX = null, prevY = null, prevState = null;
+	var prevX = null, prevY = null, prevState = null, i = 0;
 
-	for (i = 0; i < num360s; i += second) {
-		var angle = i * 2 * Math.PI;
-		curX = center + spacing * i * Math.sin(angle);
-		curY = center - spacing * i * Math.cos(angle);
+	var execdraw = function() {
+		for (n = 1000; n > 0 && i < num360s; n-- && (i += second)) {
+			var angle = i * 2 * Math.PI;
+			var curX = center + spacing * i * Math.sin(angle);
+			var curY = center - spacing * i * Math.cos(angle);
 
-		if (prevX != null) {
-			v = Math.floor(i * 255 / num360s);
-			curState = state4pos(i);
-			if (curState != prevState) {
-				if (prevState != null) {
-					context.stroke();
+			if (prevX != null) {
+				v = Math.floor(i * 255 / num360s);
+				curState = state4pos(i);
+				if (curState != prevState) {
+					if (prevState != null) {
+						context.stroke();
+					}
+					context.strokeStyle = curState ? openColor : closedColor;
+					context.beginPath();
+					context.moveTo(prevX, prevY);
+					prevState = curState;
 				}
-				context.strokeStyle = curState ? openColor : closedColor;
-				context.beginPath();
-				context.moveTo(prevX, prevY);
-				prevState = curState;
+				context.lineTo(curX, curY);
 			}
-			context.lineTo(curX, curY);
+			prevX = curX;
+			prevY = curY;
 		}
-		prevX = curX;
-		prevY = curY;
-	}
 
-	context.stroke();
-	buttonstate();
+		if (i < num360s) {
+			setTimeout(execdraw, 1);
+		} else {
+			context.stroke();
+			buttonstate();
+      $('time').innerHTML = (new Date() - start) / 1000 + ' s';
+		}
+	};
+	execdraw();
 }
 
 Event.observe(window, 'load', init);
