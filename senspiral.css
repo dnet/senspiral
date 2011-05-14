@@ -43,3 +43,7 @@ h1 {
 #nscanvas {
 	float: left;
 }
+
+#time {
+	font-size: 80%;
+}
